@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read</title>
+    <link rel="stylesheet" href="/views/css/read.css">
+</head>
+
+<body>
+    <% for (let board of boards) { %>
+        <div class="container">
+            <h1>
+                <%= board.title %> | <%= board.id %>
+            </h1>
+
+            <div class="view_date">
+                조회수: <%= board.viewCount %> <br>
+                <%= formatDate(board.created_date) %>
+            </div>
+
+            <div class="content">
+                <%= board.content %>
+            </div>
+        </div>
+
+        <div class="btns">
+            <a href="/board/update/<%= board.no %>">
+                <button class="editBtn">수정</button>
+            </a>
+            <a href="/board/delete/<%= board.no %>">
+                <button class="delBtn">삭제</button>
+            </a>
+            <a href="/">
+                <button class="listBtn">목록</button>
+            </a>
+        </div>
+
+    <!-- 댓글 -->
+    <form action="/board/read/<%= board.no %>" method="post">
+        <input type="text" name="content" class="comment">
+        <input type="submit" value="등록" class="commentBtn">
+    </form>
+
+    <!-- 댓글 목록 -->
+    <div class="group">
+        <table>
+            <tbody>
+                <% comments.forEach((comment, index)=> { %>
+                    <tr>
+                        <td style="padding-right: 30px">
+                            <%= comment.id %>
+                        </td>
+                        <td style="padding-right: 30px">
+                            <a href="/board/delete/<%= board.no %>/comment/<%= comment.comment_no %>"><%= comment.content %></a>
+                        </td>
+                        <td>
+                            <%= formatDate(comment.created_date) %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+
+        <!-- 댓글 페이징 -->
+        <div class="paging">
+            <% for (let i=1; i <=totalPages; i++) { %>
+                <a href="/?page=<%= i %>" class="<%= (currentPage === i) ? 'active' : '' %>">
+                    <%= i %>
+                </a>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

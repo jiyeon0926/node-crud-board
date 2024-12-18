@@ -1,0 +1,101 @@
+* {
+    overflow: hidden;
+}
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(../image/sky.jpg);
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding-bottom: 20px;
+}
+
+.memberBtn {
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px 7px;
+    font-size: 12px;
+}
+
+.createBtn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px 7px;
+    font-size: 12px;
+}
+
+.logBtn {
+    background-color: #ff3434;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px 7px;
+    font-size: 12px;
+}
+
+.myBtn {
+    background-color: rgb(34, 143, 9);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px 7px;
+    font-size: 12px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 5px;
+}
+
+th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 4px;
+}
+
+td {
+    border-bottom: 1px solid black;
+    padding: 3px;
+}
+
+.ifOut {
+    position: relative;
+    left: 75.2%;
+}
+
+.ifIn {
+    position: relative;
+    left: 74.3%;
+}
+
+a:link,
+a:visited {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.paging {
+    margin-top: 13px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBoardList</title>
+
+    <link rel="stylesheet" href="/views/css/myList.css">
+</head>
+
+<body>
+    <h1>CRUD Board</h1>
+
+    <h3>
+        <%= memberId %> 작성한 글
+    </h3>
+
+    <div class="btns">
+            <a href="/"><button class="home">홈</button></a>
+            <a href="/logout"><button class="logBtn">로그아웃</button></a>
+            <a href="/board/create"><button class="createBtn">글쓰기</button></a>
+    </div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th class="date">작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% boards.forEach((board, index) => { %>
+                    <tr>
+                        <td><%= (currentPage - 1) * pageSize + index + 1 %></td>
+                        <td><a href="/board/read/<%= board.no %>"><%= board.title %></a></td>
+                        <td><%= board.id %></td>
+                        <td><%= formatDate(board.created_date) %></td>
+                        <td><%= board.viewCount %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <div class="paging">
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <a href="/board/myList?page=<%= i %>" class="<%= (currentPage === i) ? 'active' : '' %>"><%= i %></a>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

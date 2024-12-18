@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="stylesheet" href="/views/css/create.css">
+</head>
+
+<body>
+    <h1>CRUD Board</h1>
+    <% for (let board of boards) { %>
+        <form action="/board/update/<%= board.no %>" method="post">
+            <div class="group">
+                <input type="text" name="title" id="title" oninput="limitTitle()" value="<%= board.title %>">
+                <textarea name="content" id="content" cols="30" rows="10"><%= board.content %></textarea>
+            </div>
+
+            <input type="submit" value="저장" class="saveBtn">
+        </form>
+    <% } %>
+
+    <a href="/">
+        <button class="cancelBtn">취소</button>
+    </a>
+
+    <script src="/views/js/create.js"></script>
+</body>
+
+</html>
